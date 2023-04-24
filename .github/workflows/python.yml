@@ -1,8 +1,20 @@
+
 name: Python CI
 
 on: [push]
 
 jobs:
+
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Use the token
+      env:
+        MY_TOKEN: ${{ secrets.MYTOKEN }}
+      run: |
+        echo $MYTOKEN
   test:
     runs-on: Ubuntu-latest
     strategy:
