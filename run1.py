@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 
 import os
 
-my_secret = os.environ['MYSECRET']
+my_secret = os.environ['MYTOKEN']
 
 def open_ics_file(filename):
     with open(filename, "rb") as f:
