@@ -62,10 +62,10 @@ import requests
 file_path = "ics/output.html"
 github_token = "token"
 repo_owner = "Daniel011011"
-repo_name = "DNS"
+repo_name = "CDN"
 file_name = "output.html"
 commit_message = "upload file"
-
+print（github_token）
 # 读取文件内容，并进行 base64 编码
 with open(file_path, "rb") as f:
     file_content = f.read()
