@@ -37,7 +37,13 @@ def display_events(events):
     html_str += "</table></body></html>"
     return html_str
 
-cal = open_ics_file("kebiao.ics")
+def open_ics_file(filepath):
+    with open(filepath, "rb") as f:
+        data = f.read()
+        cal = Calendar.from_ical(data)
+        return cal
+
+cal = open_ics_file("ics/test.ics")
 events = extract_events(cal)
 html_str = display_events(events)
 with open('output.html', 'w', encoding='utf-8') as f:
