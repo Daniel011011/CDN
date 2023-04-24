@@ -54,31 +54,39 @@ print(html_str.encode('utf-8').decode('utf-8'))
 with open('ics/output.html', 'w', encoding='utf-8') as f:
     f.write(html_str)
 
+
+import base64
 import requests
 
-# 设置GitHub仓库的API地址和上传文件的路径
-api_url = "https://api.github.com/repos/Daniel011011/DNS/contents/ics/output.html"
+# 设置变量
 file_path = "ics/output.html"
 github_token = "token"
+repo_owner = "Daniel011011"
+repo_name = "DNS"
+file_name = "output.html"
+commit_message = "upload file"
 
-# 读取文件内容
+# 读取文件内容，并进行 base64 编码
 with open(file_path, "rb") as f:
     file_content = f.read()
+file_content_base64 = base64.b64encode(file_content).decode('utf-8')
 
-# 构造HTTP请求头部，包括认证信息和文件名
+# 构造 HTTP 请求头部，包括认证信息和文件名
 headers = {
     "Authorization": f"token {github_token}",
-    "Content-Type": "application/json",
-    "Accept": "application/vnd.github.v3+json",
+    "Content-Type": "application/octet-stream",
     "User-Agent": "Daniel011011",
 }
+
+# 构造 HTTP 请求参数
 params = {
-    "message": "upload file",
-    "content": file_content.decode("utf-8"),
+    "message": commit_message,
+    "content": file_content_base64,
 }
 
-# 发送HTTP请求
+# 发送 HTTP 请求
+api_url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}"
 response = requests.put(api_url, headers=headers, json=params)
 
-# 打印响应结果
-print(response.status_code, response.content)
+# 检查响应状态码，确保上传成功
+response.raise_for_status()
