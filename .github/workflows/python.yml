@@ -19,3 +19,5 @@ jobs:
     - name: List files
       run: |
         ls
+    - name: Run Python script
+      run: python run1.py
