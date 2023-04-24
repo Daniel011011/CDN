@@ -1,5 +1,4 @@
 from icalendar import Calendar
-from ics import Calendar as icsCalendar
 import html
 from datetime import datetime, timedelta
 
@@ -37,26 +36,14 @@ def display_events(events):
     html_str += "</table></body></html>"
     return html_str
 
-def open_ics_file(filepath):
-    with open(filepath, "rb") as f:
+def open_ics_file(filename):
+    with open(filename, "rb") as f:
         data = f.read()
         cal = Calendar.from_ical(data)
         return cal
 
-    
-with open("111.txt", "w") as f:
-    # 写入内容
-    f.write("这是一个示例文件。")    
-    
-    
-    
-with open('ics/test.ics', 'r', encoding='utf-8') as f:
-    cal = f.read()
-    
+cal = open_ics_file("ics/test.ics")
 events = extract_events(cal)
 html_str = display_events(events)
-with open('output.html', 'w', encoding='utf-8') as f:
+with open('ics/output.html', 'w', encoding='utf-8') as f:
     f.write(html_str)
-
-    
-    
