@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import os
 
 token = os.environ['MYTOKEN']
-print(token)
+
 def open_ics_file(filename):
     with open(filename, "rb") as f:
         data = f.read()
@@ -60,7 +60,6 @@ import requests
 
 # 设置变量
 file_path = "ics/output.html"
-github_token = "token"
 repo_owner = "Daniel011011"
 repo_name = "CDN"
 file_name = "output.html"
@@ -73,7 +72,7 @@ file_content_base64 = base64.b64encode(file_content).decode('utf-8')
 
 # 构造 HTTP 请求头部，包括认证信息和文件名
 headers = {
-    "Authorization": f"token {github_token}",
+    "Authorization": f"token {token}",
     "Content-Type": "application/octet-stream",
     "User-Agent": "Daniel011011",
 }
