@@ -1,10 +1,9 @@
 from icalendar import Calendar
 import html
 from datetime import datetime, timedelta
-
 import os
 
-my_secret = os.environ['MYTOKEN']
+token = os.environ['MYTOKEN']
 
 def open_ics_file(filename):
     with open(filename, "rb") as f:
@@ -60,7 +59,7 @@ import requests
 # 设置GitHub仓库的API地址和上传文件的路径
 api_url = "https://api.github.com/repos/Daniel011011/DNS/contents/ics/output.html"
 file_path = "ics/output.html"
-github_token = "my_secret"
+github_token = "token"
 
 # 读取文件内容
 with open(file_path, "rb") as f:
