@@ -12,10 +12,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: List files in directory
+    - name: Run Python script
       run: |
-        ls
-        
-    - name: Output a message
-      run: |
-        echo "Hello, world!"
+        python3 run1.py
