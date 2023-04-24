@@ -1,2 +1,2 @@
-- name: Install ics library
-  run: python -m pip install ics==0.7.1
+icalendar==4.0.7
+ics>=0.7.1
