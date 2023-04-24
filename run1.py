@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 import os
 
 token = os.environ['MYTOKEN']
-
+print(token)
 def open_ics_file(filename):
     with open(filename, "rb") as f:
         data = f.read()
