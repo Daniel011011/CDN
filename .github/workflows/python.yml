@@ -12,12 +12,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Generate file
+    - name: Install dependencies
       run: |
-        echo "This is a test file." > 123.txt
-        
-    - name: List files
-      run: |
-        ls
+        python -m pip install --upgrade pip
+        pip install icalendar
+      
     - name: Run Python script
-      run: python run1.py
+      run: |
+        python run1.py
