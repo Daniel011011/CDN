@@ -43,6 +43,10 @@ def open_ics_file(filepath):
         cal = Calendar.from_ical(data)
         return cal
 
+with open("111.txt", "w") as f:
+# 写入内容
+f.write("这是一个示例文件。")
+    
 cal = open_ics_file("ics/柯基日历订阅.ics")
 events = extract_events(cal)
 html_str = display_events(events)
