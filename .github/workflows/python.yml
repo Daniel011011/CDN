@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: Ubuntu-latest
     strategy:
       matrix:
         python-version: [3.9]
