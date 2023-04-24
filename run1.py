@@ -43,7 +43,10 @@ def open_ics_file(filename):
         return cal
 
 cal = open_ics_file("ics/test.ics")
+
 events = extract_events(cal)
+print(events)
 html_str = display_events(events)
+print(html_str)
 with open('ics/output.html', 'w', encoding='utf-8') as f:
     f.write(html_str)
