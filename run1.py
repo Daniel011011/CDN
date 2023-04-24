@@ -50,3 +50,32 @@ html_str = display_events(events)
 print(html_str.encode('utf-8').decode('utf-8'))
 with open('ics/output.html', 'w', encoding='utf-8') as f:
     f.write(html_str)
+
+import requests
+
+# 设置GitHub仓库的API地址和上传文件的路径
+api_url = "https://api.github.com/repos/Daniel011011/DNS/contents/ics/output.html"
+file_path = "ics/output.html"
+github_token = "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"
+
+# 读取文件内容
+with open(file_path, "rb") as f:
+    file_content = f.read()
+
+# 构造HTTP请求头部，包括认证信息和文件名
+headers = {
+    "Authorization": f"token {github_token}",
+    "Content-Type": "application/json",
+    "Accept": "application/vnd.github.v3+json",
+    "User-Agent": "<your_github_username>",
+}
+params = {
+    "message": "upload file",
+    "content": file_content.decode("utf-8"),
+}
+
+# 发送HTTP请求
+response = requests.put(api_url, headers=headers, json=params)
+
+# 打印响应结果
+print(response.status_code, response.content)
