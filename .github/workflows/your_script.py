@@ -43,7 +43,7 @@ def open_ics_file(filepath):
         cal = Calendar.from_ical(data)
         return cal
 
-cal = open_ics_file("ics/test.ics")
+cal = open_ics_file("ics/柯基日历订阅.ics")
 events = extract_events(cal)
 html_str = display_events(events)
 with open('output.html', 'w', encoding='utf-8') as f:
