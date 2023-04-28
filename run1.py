@@ -115,4 +115,4 @@ html_str = display_events(events)
 with open(outfile_path, 'w', encoding='utf-8') as f:
     f.write(html_str)
 
-update_github_file(outfile_path,0,token,repo_name)
+#update_github_file(outfile_path,0,token,repo_name)
