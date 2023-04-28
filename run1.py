@@ -11,11 +11,11 @@ repo_owner = "Daniel011011"
 repo_name = "CDN"
 
 #infile需要处理的文件
-infile_path = 'ics/课表.ics'
+infile_path = 'ics/mycal.ics'
 infile_name = ''
 
 #输出位置
-outfile_path = "html/kebiao.html"
+outfile_path = "html/mycal.html"
 outfile_name = "kebiao.html"
 
 #上传位置
@@ -45,16 +45,16 @@ def display_events(events):
     html_str = """<html>
 <html>
     <head>
-        <title>My Calendar</title>
+        <title>日程表</title>
         <style>
           p {
             font-size: 10vw; /* 字体大小为视口宽度的 5% */
           }
           th {
-            font-size: 45px; /* 设置表头的字体大小为 25px */
+            font-size: 42px; /* 设置表头的字体大小为 25px */
         }
         td {
-            font-size: 40px; /* 设置表格内容的字体大小为 15px */
+            font-size: 38px; /* 设置表格内容的字体大小为 15px */
         }
         </style>
       </head>
@@ -115,4 +115,4 @@ html_str = display_events(events)
 with open(outfile_path, 'w', encoding='utf-8') as f:
     f.write(html_str)
 
-#update_github_file(outfile_path,0,token,repo_name)
+update_github_file(outfile_path,0,token,repo_name)
