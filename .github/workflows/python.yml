@@ -2,9 +2,9 @@ name: My Python Action
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    paths:
+      - 'ics/**'
+
 
 jobs:
   build:
