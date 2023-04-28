@@ -8,19 +8,17 @@ from github import Github
 token = os.environ['MYTOKEN']
 
 repo_owner = "Daniel011011"
-repo_name = "CDN"
+repo_name = "calendar_kindle"
 
 #infile需要处理的文件
 infile_path = 'ics/mycal.ics'
-infile_name = ''
+
 
 #输出位置
-outfile_path = "html/mycal.html"
+outfile_path = "mycal.html"
 outfile_name = "kebiao.html"
 
-#上传位置
-upfile_path = ''
-upfile_name = ''
+
 
 #打开文件
 def open_ics_file(filename):
@@ -45,7 +43,7 @@ def display_events(events):
     html_str = """<html>
 <html>
     <head>
-        <title>日程表</title>
+        <title>My Calendar</title>
         <style>
           p {
             font-size: 10vw; /* 字体大小为视口宽度的 5% */
@@ -85,7 +83,7 @@ def display_events(events):
 
 
 #更新文件方法
-def update_github_file(file_path, file_name, token, repo_name):
+def update_github_file(file_path, token, repo_name):
     # 创建 Github 对象，使用 token 或者用户名和密码进行认证
     g = Github(token) # 或者 g = Github(login, password)
 
@@ -93,7 +91,7 @@ def update_github_file(file_path, file_name, token, repo_name):
     repo = g.get_user().get_repo(repo_name)
 
     # 构造提交信息
-    commit_message = "update file by PyGithub"
+    commit_message = "update file by GitHubAction"
 
     # 获取文件内容
     with open(file_path, "rb") as f:
@@ -107,7 +105,7 @@ def update_github_file(file_path, file_name, token, repo_name):
     repo.update_file(file_path, commit_message, file_content, sha)
 
 cal = open_ics_file(infile_path)
-print(cal)
+
 events = extract_events(cal)
 
 html_str = display_events(events)
@@ -115,4 +113,4 @@ html_str = display_events(events)
 with open(outfile_path, 'w', encoding='utf-8') as f:
     f.write(html_str)
 
-update_github_file(outfile_path,0,token,repo_name)
+update_github_file(outfile_path,token,repo_name)
